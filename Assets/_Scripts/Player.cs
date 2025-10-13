@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     
-    public float speed = 3.0f;
+    public float speed = 0.05f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*
         // Player Controls
         // UP
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (gameObject.transform.position.y + speed) <10)
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Vector2 pos = new Vector2(
                 gameObject.transform.position.x,
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
             gameObject.transform.position = pos;
         }
+        
         //DOWN
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -54,5 +55,17 @@ public class Player : MonoBehaviour
 
             gameObject.transform.position = pos;
         }
+        */
+
+        // Right Movement
+        if (Keyboard.current.rightArrowKey.isPressed)
+        {
+            Vector2 position = transform.position;
+            position.x += speed;
+            transform.position = position;
+        }
+
+        
+        
     }
 }
