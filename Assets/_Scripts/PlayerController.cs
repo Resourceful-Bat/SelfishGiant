@@ -17,14 +17,14 @@ public class PlayerController : MonoBehaviour
     public InputAction SpaceAction;
 
     // Player Speed
-    public float speed = 5.0f;
+    public float speed = 4.0f;
 
     //Runt Manager
     public RuntManager runtManager;
     public float goalCount;
 
     //Snow Slowdown
-    public float slowdown = 0.5f;
+    public float slowdown = 1.5f;
 
     // Changes Opacity. Test for winter fade in
     //public SpriteRenderer spriteRenderer;
