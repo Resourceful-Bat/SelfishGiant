@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
 
     //Runt Manager
     public RuntManager runtManager;
+    public float goalCount;
+
+    //Snow Slowdown
+    public float slowdown = 0.5f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +40,8 @@ public class PlayerController : MonoBehaviour
         DownAction.Enable();
         ShiftAction.Enable();
         SpaceAction.Enable();
+
+        goalCount = runtManager.runtCount;
     }
 
     // Update is called once per frame
@@ -44,10 +50,14 @@ public class PlayerController : MonoBehaviour
 
         Vector2 position = transform.position;
 
+        //Sets the slowdown weight
+        //slowdown *= (goalCount - runtManager.runtCount);
+
+
         // Makes player move faster when Sprint button is pressed
-        if (ShiftAction.IsPressed())
+        if (ShiftAction.IsPressed() && speed < 9.0f)
         {
-            speed = 10.0f;
+            speed *= 2.0f;
         }
         else
         {
@@ -57,27 +67,30 @@ public class PlayerController : MonoBehaviour
         //Moves the Player
         if (LeftAction.IsPressed())
         {
-            position.x -= speed * Time.deltaTime;
+            position.x -= (speed-slowdown * (goalCount - runtManager.runtCount)) * Time.deltaTime;
         }
         if (UpAction.IsPressed())
         {
-            position.y += speed * Time.deltaTime;
+            position.y += (speed - slowdown * (goalCount - runtManager.runtCount)) * Time.deltaTime;
         }
         if (RightAction.IsPressed())
         {
-            position.x += speed * Time.deltaTime;
+            position.x += (speed - slowdown * (goalCount - runtManager.runtCount)) * Time.deltaTime;
         }
         if (DownAction.IsPressed())
         {
-            position.y -= speed * Time.deltaTime;
+            position.y -= (speed - slowdown * (goalCount - runtManager.runtCount)) * Time.deltaTime;
         }
 
+        
         transform.position = position;
 
         // Capture Runt *W.I.P.
         if (SpaceAction.IsPressed())
         {
-
+            Debug.Log(slowdown.ToString());
+            Debug.Log(goalCount.ToString());
+            Debug.Log(runtManager.runtCount.ToString());
         }
 
     }
@@ -91,7 +104,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Runt"))
         {
             Destroy(collision.gameObject);
-            runtManager.runtCount++;
+            runtManager.runtCount--;
+
         }
     }
 
