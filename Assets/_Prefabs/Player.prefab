@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2878646139393719271}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,110 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21ae77cf459cef4ba75ce312910f182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  speed: 0.001
+  LeftAction:
+    m_Name: Left
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d53e2994-79fe-48e4-8c2a-bc9ce42176e5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f6146ef5-172e-4521-b1ec-74729ab9d764
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left
+      m_Flags: 0
+    m_Flags: 0
+  UpAction:
+    m_Name: Up
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2c2c0425-fc19-471b-9099-c18e6e35da51
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1aee605e-9e6d-4173-be53-a53be04ab9ae
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Up
+      m_Flags: 0
+    m_Flags: 0
+  RightAction:
+    m_Name: Right
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3df2f760-4037-40b0-a88d-2009bebc3d2b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0251426d-09e4-4872-97e1-c8e114ab1766
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right
+      m_Flags: 0
+    m_Flags: 0
+  DownAction:
+    m_Name: Down
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0bb10a7c-92f1-4ae5-9875-78292d8a0fbc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7209b704-1ffb-4700-973c-dbfe4cba2e8c
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Down
+      m_Flags: 0
+    m_Flags: 0
+  ShiftAction:
+    m_Name: Shift
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 794cbb15-8600-4380-b5df-e7725c65b5dd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c904659f-639b-4b01-8458-cfe2030b1522
+      m_Path: <Keyboard>/shift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shift
+      m_Flags: 0
+    m_Flags: 0
+  SpaceAction:
+    m_Name: Space
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8f9ec67e-df7b-417d-a1b8-b9ceacdcd245
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7112566e-a136-42c7-8afd-a6f45d16ef23
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Space
+      m_Flags: 0
+    m_Flags: 0
+  speed: 0.05
+  runtManager: {fileID: 0}
 --- !u!50 &6155225818265033737
 Rigidbody2D:
   serializedVersion: 5
