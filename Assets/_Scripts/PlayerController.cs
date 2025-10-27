@@ -26,6 +26,15 @@ public class PlayerController : MonoBehaviour
     //Snow Slowdown
     public float slowdown = 0.5f;
 
+    // Changes Opacity. Test for winter fade in
+    //public SpriteRenderer spriteRenderer;
+
+    // Code for winter Fade in.
+    /*
+    Color tempColor = spriteRenderer.color;
+    tempColor.a = (float) runtManager.runtCount / 10;
+    spriteRenderer.color= tempColor;
+    */
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,11 +51,15 @@ public class PlayerController : MonoBehaviour
         SpaceAction.Enable();
 
         goalCount = runtManager.runtCount;
+        
+        //spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
 
         Vector2 position = transform.position;
 
@@ -86,11 +99,12 @@ public class PlayerController : MonoBehaviour
         transform.position = position;
 
         // Capture Runt *W.I.P.
+        // Serves as Debugging Log
         if (SpaceAction.IsPressed())
         {
             Debug.Log(slowdown.ToString());
             Debug.Log(goalCount.ToString());
-            Debug.Log(runtManager.runtCount.ToString());
+            Debug.Log( (runtManager.runtCount / 10).ToString());
         }
 
     }
