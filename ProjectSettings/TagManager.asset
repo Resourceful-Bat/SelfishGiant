@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Runt
   - Ground
+  - Patrol
+  - Obstacle
+  - POI
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - UI
   - Player
   - Environment
-  - 
+  - Patrol
   - 
   - 
   - 
@@ -57,6 +60,9 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 578047283
+    locked: 0
+  - name: Patrol
+    uniqueID: 492102897
     locked: 0
   m_RenderingLayers:
   - Default

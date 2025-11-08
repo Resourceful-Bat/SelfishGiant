@@ -5,21 +5,32 @@ using UnityEngine.UIElements;
 public class RuntMovement : MonoBehaviour
 {
 
+    //[SerializeField] private Animator _animator;
 
     // Runt Movement Variables
-    public Transform target;
+    private Transform target;
     public float speedHorizontal = 1.0f;
     public float speedVertical = 1.0f;
-    private Rigidbody2D rb;
+    public float speed = 2.0f;
 
-    // Runt captured variable
-    public bool isCaptured = false;
+    //Get amount of runts left
+    public RuntManager runtManager;
+    public float goalCount;
+
+    //Slowdown
+    public float slowdown = 0.5f;
+
+    //Is special runt?
+    public bool isSpecial = false;
+
+    private Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+        goalCount = runtManager.runtCount;
     }
 
     // Update is called once per frame
@@ -36,9 +47,15 @@ public class RuntMovement : MonoBehaviour
         //If player is within a certain distance of runt, run away
         if (distance < 5)
         {
+            //_animator.SetBool("isRunning", true);
             RunAway();
         }
-        //RunAway();
+        else
+        {
+            //_animator.SetBool("isRunning", false);
+        }
+
+        
     }
 
     void RunAway()
@@ -51,44 +68,27 @@ public class RuntMovement : MonoBehaviour
         // If player is behind runt, move forward. Else, move backward.
         if (direction.x < 0)
         {
-            speedHorizontal = 1.0f;
+            speedHorizontal = speed;
+            this.GetComponent<SpriteRenderer>().flipX = false;
         }
         else
         {
-            speedHorizontal = -1.0f;
+            speedHorizontal = speed * -1.0f;
+            this.GetComponent<SpriteRenderer>().flipX = true;
         }
         // If player is below runt, move upward. Else, move downward.
         if (direction.y < 0)
         {
-            speedVertical = 1.0f;
+            speedVertical = speed;
         }
         else
         {
-            speedVertical = -1.0f;
+            speedVertical = speed * -1.0f;
         }
-
-        //If captured, set Runt position = Player position
-        if (isCaptured == true)
-        {
-            capturedRunt();
-        }
-
 
         //Change runt position
         position.x += speedHorizontal * Time.deltaTime;
         position.y += speedVertical * Time.deltaTime;
-        transform.position = position;
-    }
-
-    public void capturedRunt()
-    {
-        isCaptured = true;
-        speedVertical = 0.0f;
-        speedHorizontal = 0.0f;
-    }
-
-    public void freedRunt()
-    {
-        isCaptured = false;
+        rb.MovePosition(position);
     }
 }
